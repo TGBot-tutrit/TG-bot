@@ -78,3 +78,4 @@ public class Fine {
         return fineBalance;
     }
 }
+
