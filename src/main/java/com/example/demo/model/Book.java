@@ -3,11 +3,11 @@ package com.example.demo.model;
 import java.util.Objects;
 
 public class Book {
-    String title;
-    String author;
-    String language;
-    int pages;
-    int yearPublished;
+    private String title;
+    private String author;
+    private String language;
+    private int pages;
+    private int yearPublished;
 
     public Book() {
     }
