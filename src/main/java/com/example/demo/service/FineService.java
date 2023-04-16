@@ -8,6 +8,6 @@ public class FineService {
 
     public double calculateFine(Fine fine) {
         fine.setFineBalance(fine.getFineBalance() + fine.getDaysLate() * 0.25);
-        return fine.getFineBalance() * 2;
+        return fine.getFineBalance();
     }
 }

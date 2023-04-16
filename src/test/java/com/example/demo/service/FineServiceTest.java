@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.Assert.*;
+
 @SpringBootTest
 class FineServiceTest {
     @Autowired
@@ -15,10 +15,10 @@ class FineServiceTest {
     @Test
     void calculateFine() {
         Fine fine = new Fine();
-        fine.setFineBalance(4);
-        fine.setDaysLate(3);
+        fine.setFineBalance(2);
+        fine.setDaysLate(4);
         double actualFine = fineService.calculateFine(fine);
-        Assert.assertEquals(9.5, actualFine, 1e-15);
+        Assert.assertEquals(3, actualFine, 1e-15);
     }
 
 }
