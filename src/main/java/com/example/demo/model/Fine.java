@@ -72,10 +72,5 @@ public class Fine {
                 ", blackListed=" + blackListed +
                 '}';
     }
-
-    public double calculateFine(double fineBalance) {
-        fineBalance += daysLate * 0.25;
-        return fineBalance;
-    }
 }
 
