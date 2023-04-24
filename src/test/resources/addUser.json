@@ -1,0 +1,28 @@
+{
+  "update_id": 828557656,
+  "message": {
+    "message_id": 37,
+    "from": {
+      "id": 185929241,
+      "first_name": "max",
+      "is_bot": false,
+      "username": "mikas_sh",
+      "language_code": "en"
+    },
+    "date": 1682354158,
+    "chat": {
+      "id": 185929241,
+      "type": "private",
+      "first_name": "max",
+      "username": "mikas_sh"
+    },
+    "text": "/addUser Maksim",
+    "entities": [
+      {
+        "type": "bot_command",
+        "offset": 0,
+        "length": 8
+      }
+    ]
+  }
+}

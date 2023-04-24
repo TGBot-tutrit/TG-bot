@@ -5,6 +5,7 @@ import java.util.Objects;
 public class User {
     private String username;
     private String password;
+    private String name;
 
     public User() {
     }
@@ -28,6 +29,15 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -35,12 +45,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(username, user.username) && Objects.equals(password, user.password);
+        return Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(name, user.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, password);
+        return Objects.hash(username, password, name);
     }
 
     @Override
@@ -48,7 +58,7 @@ public class User {
         return "User{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }
-
