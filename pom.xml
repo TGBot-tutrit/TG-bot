@@ -14,7 +14,14 @@
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
+	<sonar.projectKey>TGBot-tutrit</sonar.projectKey>
+	<sonar.organization>TGBot-tutrit</sonar.organization>
+	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	<!--suppress UnresolvedMavenProperty -->
+		<sonar.login>${sonar.token}</sonar.login>
+
 		<java.version>17</java.version>
+
 	</properties>
 	<dependencies>
 		<dependency>
