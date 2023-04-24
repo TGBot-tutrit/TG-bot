@@ -1,5 +1,8 @@
 package com.example.demo.service;
 
+import com.example.demo.processor.AddUserProcessor;
+import com.example.demo.processor.SaveBookProcessor;
+import com.example.demo.util.Saver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -24,10 +27,15 @@ public class TelegramBot extends TelegramLongPollingBot {
             sendMessage.setText("Hello teamS2!");
             sendMessage.setChatId(chatId);
         } else if("/save_book".equals(text)) {
+            new SaveBookProcessor().save(update);
             sendMessage.setText("Book shell is full! come back later");
             sendMessage.setChatId(chatId);
+        } else if (text.startsWith("/addUser")) {
+            Saver.saveAsJson(update);
+            new AddUserProcessor().process(update);
+            sendMessage.setText("User saved!");
+            sendMessage.setChatId(chatId);
         }
-
         try {
             this.execute(sendMessage);
         } catch (Exception e) {
