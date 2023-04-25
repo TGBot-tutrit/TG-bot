@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import com.example.demo.model.BookSlot;
+
 import java.util.HashMap;
 import java.util.Map;
 
