@@ -2,7 +2,10 @@ package com.example.demo.repository;
 
 import com.example.demo.model.Book;
 import com.example.demo.model.BookSlot;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.Map;
 
 class BookShelfRepositoryTest {
 
@@ -29,21 +32,22 @@ class BookShelfRepositoryTest {
         Book book1 = new Book();
         book1.setTitle("Alhimik");
         bookSlot.setBook(book1);
-        bookShelfRepository.unoccupiedBooks(bookSlot);
+        Map<Integer, BookSlot> bookSlotMap = bookShelfRepository.unoccupiedBooks(bookSlot);
+        Assertions.assertEquals(1, bookSlotMap.size());
 
         Book book2 = new Book();
         book2.setTitle("Generation Pi");
         bookSlot2.setBook(book2);
         bookSlot2.setUserId(1);
         bookShelfRepository.unoccupiedBooks(bookSlot2);
+        Assertions.assertEquals(1, bookSlotMap.size());
+
 
         Book book3 = new Book();
         book3.setTitle("Snuff");
         bookSlot3.setBook(book3);
-
         bookShelfRepository.unoccupiedBooks(bookSlot3);
-
-
+        Assertions.assertEquals(2, bookSlotMap.size());
     }
 }
 
