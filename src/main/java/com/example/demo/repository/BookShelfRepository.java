@@ -17,8 +17,13 @@ public class BookShelfRepository {
         bookSlot.setUserId(userId);
         booksMap.put(nextId, bookSlot);
         nextId++;
+    }
 
-
+    public String reserveBookForUser(Long userId, Integer bookId) {
+        BookSlot bookSlot = booksMap.get(bookId);
+        bookSlot.setUserId(userId);
+        booksMap.put(bookId, bookSlot);
+        return bookSlot.getBook().getTitle();
     }
 
 }
