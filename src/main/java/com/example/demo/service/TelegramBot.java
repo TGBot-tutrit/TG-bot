@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.processor.AddBookProcessor;
 import com.example.demo.processor.AddUserProcessor;
 import com.example.demo.processor.SaveBookProcessor;
 import com.example.demo.util.Saver;
@@ -34,6 +35,11 @@ public class TelegramBot extends TelegramLongPollingBot {
             Saver.saveAsJson(update);
             new AddUserProcessor().process(update);
             sendMessage.setText("User saved!");
+            sendMessage.setChatId(chatId);
+        } else if (text.startsWith("/addBook")) {
+            // Saver.saveAsJson(update);
+            new AddBookProcessor().process(update);
+            sendMessage.setText("Book saved!");
             sendMessage.setChatId(chatId);
         }
         try {
