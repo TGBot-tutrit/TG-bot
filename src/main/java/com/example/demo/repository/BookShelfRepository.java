@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class BookShelfRepository {
     private static Map<Integer, BookSlot> booksMap = new HashMap<>();
-
+    private static Map<Integer, BookSlot> unoccupiedBooksMap = new HashMap<>();
     private static Integer nextId = 1;
 
     public static void addBook(Book book, Long userId) {
@@ -18,7 +18,15 @@ public class BookShelfRepository {
         booksMap.put(nextId, bookSlot);
         nextId++;
 
+    }
 
+    public Map<Integer, BookSlot> unoccupiedBooks(BookSlot bookSlot) {
+
+        if (bookSlot.getUserId() == 0) {
+            unoccupiedBooksMap.put(nextId, bookSlot);
+            nextId++;
+        }
+        return unoccupiedBooksMap;
     }
 
 }
