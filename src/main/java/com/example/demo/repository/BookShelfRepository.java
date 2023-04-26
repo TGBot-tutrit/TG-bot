@@ -11,7 +11,7 @@ public class BookShelfRepository {
 
     private static Integer nextId = 1;
 
-    static void addBook(Book book, Long userId) {
+    public static void addBook(Book book, Long userId) {
         BookSlot bookSlot = new BookSlot();
         bookSlot.setBook(book);
         bookSlot.setUserId(userId);
