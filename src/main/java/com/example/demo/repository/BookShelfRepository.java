@@ -6,7 +6,8 @@ import com.example.demo.model.BookSlot;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BookShelfRepository {
+public class
+BookShelfRepository {
     private static Map<Integer, BookSlot> booksMap = new HashMap<>();
     private static Map<Integer, BookSlot> unoccupiedBooksMap = new HashMap<>();
     private static Integer nextId = 1;
@@ -19,14 +20,15 @@ public class BookShelfRepository {
         nextId++;
     }
 
+    public Map<Integer, BookSlot> unoccupiedBooks() {
+        Map<Integer, BookSlot> freeBooks = new HashMap<>();
+        for( Map.Entry<Integer, BookSlot> entry : booksMap.entrySet()) {
+            if (entry.getValue().getUserId() == null) {
+                freeBooks.put(entry.getKey(), entry.getValue());
 
-    public Map<Integer, BookSlot> unoccupiedBooks(BookSlot bookSlot) {
-
-        if (bookSlot.getUserId() == 0) {
-            unoccupiedBooksMap.put(nextId, bookSlot);
-            nextId++;
+            }
         }
-        return unoccupiedBooksMap;
+        return freeBooks;
 }
 
     public String reserveBookForUser(Long userId, Integer bookId) {
