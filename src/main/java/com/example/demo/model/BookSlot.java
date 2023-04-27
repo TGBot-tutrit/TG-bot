@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class BookSlot {
     private Book book;
-    private long userId;
+    private Long userId;
 
     public BookSlot() {
     }
@@ -22,11 +22,11 @@ public class BookSlot {
         this.book = book;
     }
 
-    public long getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
