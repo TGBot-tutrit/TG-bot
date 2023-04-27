@@ -25,11 +25,10 @@ class BookShelfRepositoryTest {
         Book book1 = new Book("Voina i mir", "Lev Tolstoi", 750, 1979, "eng");
         Book book2 = new Book("One Hundred Years of Solitude", "Gabriel García Márquez", 450, 1968, "eng");
         Book book3 = new Book("Dracula", "Bram Stoker", 488, 1897, "eng");
-        bookShelfRepository.unoccupiedBooks(new BookSlot(book1, 0L));
-        bookShelfRepository.unoccupiedBooks(new BookSlot(book2, 45L));
-        bookShelfRepository.unoccupiedBooks(new BookSlot(book3, 0L));
-        Assertions.assertEquals(2, BookShelfRepository.sizeUnoccupiedBooksMap());
-
+        bookShelfRepository.addBook(book1, 1L);
+        bookShelfRepository.addBook(book2, 2L);
+        bookShelfRepository.addBook(book3, null);
+        Assertions.assertEquals(1, bookShelfRepository.unoccupiedBooks().size());
     }
 }
 
