@@ -11,7 +11,7 @@ public class BookShelfRepository {
     private static Map<Integer, BookSlot> unoccupiedBooksMap = new HashMap<>();
     private static Integer nextId = 1;
 
-    public static void addBook(Book book, Long userId) {
+    public void addBook(Book book, Long userId) {
         BookSlot bookSlot = new BookSlot();
         bookSlot.setBook(book);
         bookSlot.setUserId(userId);
