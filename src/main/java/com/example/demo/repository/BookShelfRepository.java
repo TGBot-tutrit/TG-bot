@@ -29,4 +29,11 @@ public class BookShelfRepository {
         return unoccupiedBooksMap;
     }
 
+    public static int sizeBooksMap() {
+        return booksMap.size();
+    }
+
+    public static int sizeUnoccupiedBooksMap() {
+        return unoccupiedBooksMap.size();
+    }
 }
