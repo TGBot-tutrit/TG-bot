@@ -17,8 +17,8 @@ public class BookShelfRepository {
         bookSlot.setUserId(userId);
         booksMap.put(nextId, bookSlot);
         nextId++;
-
     }
+
 
     public Map<Integer, BookSlot> unoccupiedBooks(BookSlot bookSlot) {
 
@@ -27,6 +27,13 @@ public class BookShelfRepository {
             nextId++;
         }
         return unoccupiedBooksMap;
+}
+
+    public String reserveBookForUser(Long userId, Integer bookId) {
+        BookSlot bookSlot = booksMap.get(bookId);
+        bookSlot.setUserId(userId);
+        booksMap.put(bookId, bookSlot);
+        return bookSlot.getBook().getTitle();
     }
 
     public static int sizeBooksMap() {
