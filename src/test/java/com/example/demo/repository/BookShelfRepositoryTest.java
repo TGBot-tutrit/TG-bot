@@ -1,21 +1,34 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.Book;
+import com.example.demo.model.BookSlot;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class BookShelfRepositoryTest {
 
     @Test
-    void addBook() {
-        Book book1 = new Book();
-        book1.setTitle("Vojna i mir");
+    void addBookInBookMAp() {
+        Book book1 = new Book("Voina i mir", "Lev Tolstoi", 750, 1979, "eng");
+        Book book2 = new Book("One Hundred Years of Solitude", "Gabriel García Márquez", 450, 1968, "eng");
+        Book book3 = new Book("Dracula", "Bram Stoker", 488, 1897, "eng");
+        BookShelfRepository.addBook(book1, 1L);
+        BookShelfRepository.addBook(book2, 2L);
+        BookShelfRepository.addBook(book3, 3L);
+        Assertions.assertEquals(3, BookShelfRepository.sizeBooksMap());
+    }
+
+    @Test
+    void unoccupiedBooks() {
         BookShelfRepository bookShelfRepository = new BookShelfRepository();
-        bookShelfRepository.addBook(book1,1L);
-        Book book2 = new Book();
-        book2.setTitle("Postoronnij");
-        BookShelfRepository bookShelfRepository2 = new BookShelfRepository();
-        bookShelfRepository2.addBook(book2,2L);
+        Book book1 = new Book("Voina i mir", "Lev Tolstoi", 750, 1979, "eng");
+        Book book2 = new Book("One Hundred Years of Solitude", "Gabriel García Márquez", 450, 1968, "eng");
+        Book book3 = new Book("Dracula", "Bram Stoker", 488, 1897, "eng");
+        bookShelfRepository.unoccupiedBooks(new BookSlot(book1, 0L));
+        bookShelfRepository.unoccupiedBooks(new BookSlot(book2, 45L));
+        bookShelfRepository.unoccupiedBooks(new BookSlot(book3, 0L));
+        Assertions.assertEquals(2, BookShelfRepository.sizeUnoccupiedBooksMap());
+
     }
 }
+
