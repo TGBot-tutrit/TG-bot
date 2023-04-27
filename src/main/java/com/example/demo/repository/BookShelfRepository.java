@@ -5,6 +5,7 @@ import com.example.demo.model.BookSlot;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class BookShelfRepository {
     private static Map<Integer, BookSlot> booksMap = new HashMap<>();
@@ -19,7 +20,6 @@ public class BookShelfRepository {
         nextId++;
     }
 
-
     public Map<Integer, BookSlot> unoccupiedBooks() {
         Map<Integer, BookSlot> freeBooks = new HashMap<>();
         for (Map.Entry<Integer, BookSlot> entry : booksMap.entrySet()) {
@@ -30,11 +30,24 @@ public class BookShelfRepository {
         return freeBooks;
     }
 
+    public Map<Integer, Book> findBooksByUserId(Long userId) {
+        Map<Integer, Book> userBooks = new HashMap<>();
+        for (Map.Entry<Integer, BookSlot> entry : booksMap.entrySet()) {
+            if (Objects.equals(entry.getValue().getUserId(), userId)) {
+                userBooks.put(entry.getKey(), entry.getValue().getBook());
+            }
+        }
+        return userBooks;
+    }
+
     public String reserveBookForUser(Long userId, Integer bookId) {
         BookSlot bookSlot = booksMap.get(bookId);
-        bookSlot.setUserId(userId);
-        booksMap.put(bookId, bookSlot);
-        return bookSlot.getBook().getTitle();
+        if (bookSlot != null) {
+            bookSlot.setUserId(userId);
+            booksMap.put(bookId, bookSlot);
+            return bookSlot.getBook().getTitle();
+        }
+        return "none";
     }
 
     public static int sizeBooksMap() {
