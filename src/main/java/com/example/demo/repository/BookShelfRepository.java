@@ -11,14 +11,14 @@ public class BookShelfRepository {
     private static Map<Integer, BookSlot> unoccupiedBooksMap = new HashMap<>();
     private static Integer nextId = 1;
 
-    public static void addBook(Book book, Long userId) {
+    public void addBook(Book book, Long userId) {
         BookSlot bookSlot = new BookSlot();
         bookSlot.setBook(book);
         bookSlot.setUserId(userId);
         booksMap.put(nextId, bookSlot);
         nextId++;
-
     }
+
 
     public Map<Integer, BookSlot> unoccupiedBooks(BookSlot bookSlot) {
 
@@ -27,6 +27,13 @@ public class BookShelfRepository {
             nextId++;
         }
         return unoccupiedBooksMap;
+}
+
+    public String reserveBookForUser(Long userId, Integer bookId) {
+        BookSlot bookSlot = booksMap.get(bookId);
+        bookSlot.setUserId(userId);
+        booksMap.put(bookId, bookSlot);
+        return bookSlot.getBook().getTitle();
     }
 
     public static int sizeBooksMap() {
