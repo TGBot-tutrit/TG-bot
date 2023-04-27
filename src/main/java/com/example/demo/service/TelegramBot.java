@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.processor.AddBookProcessor;
 import com.example.demo.processor.AddUserProcessor;
+import com.example.demo.processor.AllBooksProcessor;
 import com.example.demo.processor.SaveBookProcessor;
 import com.example.demo.util.Saver;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,6 +41,11 @@ public class TelegramBot extends TelegramLongPollingBot {
             // Saver.saveAsJson(update);
             new AddBookProcessor().process(update);
             sendMessage.setText("Book saved!");
+            sendMessage.setChatId(chatId);
+        } else if (text.startsWith("/allBooks")) {
+            // Saver.saveAsJson(update);
+            String response = new AllBooksProcessor().process(update);
+            sendMessage.setText(response);
             sendMessage.setChatId(chatId);
         }
         try {
