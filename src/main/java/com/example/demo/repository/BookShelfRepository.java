@@ -30,11 +30,11 @@ public class BookShelfRepository {
         return freeBooks;
     }
 
-    public Map<Integer, Book> findBooksByUserId(Long userId) {
-        Map<Integer, Book> userBooks = new HashMap<>();
+    public Map<Integer, BookSlot> findBooksByUserId(Long userId) {
+        Map<Integer, BookSlot> userBooks = new HashMap<>();
         for (Map.Entry<Integer, BookSlot> entry : booksMap.entrySet()) {
             if (Objects.equals(entry.getValue().getUserId(), userId)) {
-                userBooks.put(entry.getKey(), entry.getValue().getBook());
+                userBooks.put(entry.getKey(), entry.getValue());
             }
         }
         return userBooks;
