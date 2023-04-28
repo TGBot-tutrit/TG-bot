@@ -13,6 +13,6 @@ public class AddBookProcessor {
         Book book = new Book();
         book.setTitle(bookName);
         BookShelfRepository bookShelfRepository = new BookShelfRepository();
-        bookShelfRepository.addBook(book, 0L);
+        bookShelfRepository.addBook(book, null);
     }
 }
