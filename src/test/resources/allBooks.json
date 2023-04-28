@@ -1,0 +1,30 @@
+{
+  "update_id": 828557674,
+  "message": {
+    "message_id": 67,
+    "from": {
+      "id": 779228565,
+      "first_name": "Илья",
+      "is_bot": false,
+      "last_name": "Шелкович",
+      "username": "shelkovich_ilya",
+      "language_code": "ru"
+    },
+    "date": 1682687855,
+    "chat": {
+      "id": 779228565,
+      "type": "private",
+      "first_name": "Илья",
+      "last_name": "Шелкович",
+      "username": "shelkovich_ilya"
+    },
+    "text": "/allBooks",
+    "entities": [
+      {
+        "type": "bot_command",
+        "offset": 0,
+        "length": 9
+      }
+    ]
+  }
+}
