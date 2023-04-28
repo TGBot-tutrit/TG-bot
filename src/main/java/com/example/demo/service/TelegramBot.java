@@ -1,9 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.processor.AddBookProcessor;
-import com.example.demo.processor.AddUserProcessor;
-import com.example.demo.processor.AllBooksProcessor;
-import com.example.demo.processor.SaveBookProcessor;
+import com.example.demo.processor.*;
 import com.example.demo.util.Saver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -33,7 +30,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             sendMessage.setText("Book shell is full! come back later");
             sendMessage.setChatId(chatId);
         } else if (text.startsWith("/addUser")) {
-            Saver.saveAsJson(update);
+            // Saver.saveAsJson(update);
             new AddUserProcessor().process(update);
             sendMessage.setText("User saved!");
             sendMessage.setChatId(chatId);
@@ -42,9 +39,9 @@ public class TelegramBot extends TelegramLongPollingBot {
             new AddBookProcessor().process(update);
             sendMessage.setText("Book saved!");
             sendMessage.setChatId(chatId);
-        } else if (text.startsWith("/allBooks")) {
+        } else if (text.startsWith("/myBooks")) {
             // Saver.saveAsJson(update);
-            String response = new AllBooksProcessor().process(update);
+            String response = new MyBooksProcessor().process(update);
             sendMessage.setText(response);
             sendMessage.setChatId(chatId);
         }
