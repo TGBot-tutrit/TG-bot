@@ -1,9 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.processor.AddBookProcessor;
-import com.example.demo.processor.AddUserProcessor;
-import com.example.demo.processor.AllBooksProcessor;
-import com.example.demo.processor.SaveBookProcessor;
+import com.example.demo.processor.*;
 import com.example.demo.util.Saver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -45,6 +42,11 @@ public class TelegramBot extends TelegramLongPollingBot {
         } else if (text.startsWith("/allBooks")) {
             // Saver.saveAsJson(update);
             String response = new AllBooksProcessor().process(update);
+            sendMessage.setText(response);
+            sendMessage.setChatId(chatId);
+        } else if (text.startsWith("/takeBook")) {
+            // Saver.saveAsJson(update);
+            String response = new TakeBookProcessor().process(update);
             sendMessage.setText(response);
             sendMessage.setChatId(chatId);
         }
