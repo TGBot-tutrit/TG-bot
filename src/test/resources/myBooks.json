@@ -1,0 +1,30 @@
+{
+  "update_id": 828557659,
+  "message": {
+    "message_id": 43,
+    "from": {
+      "id": 1,
+      "first_name": "Petya",
+      "is_bot": false,
+      "last_name": "Petrov",
+      "username": "petr1",
+      "language_code": "ru"
+    },
+    "date": 1622519883,
+    "chat": {
+      "id": 185929241,
+      "type": "private",
+      "first_name": "Petya",
+      "last_name": "Petrov",
+      "username": "petr1"
+    },
+    "text": "/addBook 1984",
+    "entities": [
+      {
+        "type": "bot_command",
+        "offset": 0,
+        "length": 8
+      }
+    ]
+  }
+}
