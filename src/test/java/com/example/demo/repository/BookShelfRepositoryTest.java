@@ -2,13 +2,19 @@ package com.example.demo.repository;
 
 import com.example.demo.model.Book;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class BookShelfRepositoryTest {
+    BookShelfRepository bookShelfRepository;
+    @BeforeEach
+    void setUp() {
+        bookShelfRepository = new BookShelfRepository();
+        bookShelfRepository.dropRepository();
+    }
 
     @Test
     void addBookInBookMAp() {
-        BookShelfRepository bookShelfRepository = new BookShelfRepository();
         Book book1 = new Book("Voina i mir", "Lev Tolstoi", 750, 1979, "eng");
         Book book2 = new Book("One Hundred Years of Solitude", "Gabriel García Márquez", 450, 1968, "eng");
         Book book3 = new Book("Dracula", "Bram Stoker", 488, 1897, "eng");
@@ -20,7 +26,6 @@ class BookShelfRepositoryTest {
 
     @Test
     void unoccupiedBooks() {
-        BookShelfRepository bookShelfRepository = new BookShelfRepository();
         Book book1 = new Book("Voina i mir", "Lev Tolstoi", 750, 1979, "eng");
         Book book2 = new Book("One Hundred Years of Solitude", "Gabriel García Márquez", 450, 1968, "eng");
         Book book3 = new Book("Dracula", "Bram Stoker", 488, 1897, "eng");
@@ -32,7 +37,6 @@ class BookShelfRepositoryTest {
 
     @Test
     void reserveBookForUser(){
-        BookShelfRepository bookShelfRepository = new BookShelfRepository();
         Book book1 = new Book("Voina i mir", "Lev Tolstoi", 750, 1979, "eng");
         Book book2 = new Book("One Hundred Years of Solitude", "Gabriel García Márquez", 450, 1968, "eng");
         bookShelfRepository.addBook(book1, null);
@@ -43,7 +47,6 @@ class BookShelfRepositoryTest {
 
     @Test
     void findBooksByUserId() {
-        BookShelfRepository bookShelfRepository = new BookShelfRepository();
         Book book1 = new Book("Voina i mir", "Lev Tolstoi", 750, 1979, "eng");
         Book book2 = new Book("One Hundred Years of Solitude", "Gabriel García Márquez", 450, 1968, "eng");
         Book book3 = new Book("Dracula", "Bram Stoker", 488, 1897, "eng");
@@ -52,6 +55,5 @@ class BookShelfRepositoryTest {
         bookShelfRepository.addBook(book3, 2L);
         Assertions.assertEquals(2, bookShelfRepository.findBooksByUserId(1L).size());
     }
-
 }
 

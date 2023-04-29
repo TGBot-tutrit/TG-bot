@@ -14,7 +14,7 @@ public class AllBooksProcessor {
         Map<Integer, BookSlot> allBooks = bookShelfRepository.unoccupiedBooks();
         for (Map.Entry<Integer, BookSlot> entry : allBooks.entrySet()) {
             if (entry.getValue().getUserId() == null) {
-                stringBuilder.append(entry.getKey() + ". " + entry.getValue().getBook().getTitle());
+                stringBuilder.append(entry.getKey() + ". " + entry.getValue().getBook().getTitle() + "\n");
             }
         }
         return stringBuilder.toString();
