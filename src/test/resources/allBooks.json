@@ -1,22 +1,20 @@
 {
-  "update_id": 828557674,
+  "update_id": 828557656,
   "message": {
-    "message_id": 67,
+    "message_id": 37,
     "from": {
-      "id": 779228565,
-      "first_name": "Илья",
+      "id": 185929241,
+      "first_name": "max",
       "is_bot": false,
-      "last_name": "Шелкович",
-      "username": "shelkovich_ilya",
-      "language_code": "ru"
+      "username": "mikas_sh",
+      "language_code": "en"
     },
-    "date": 1682687855,
+    "date": 1682354158,
     "chat": {
-      "id": 779228565,
+      "id": 185929241,
       "type": "private",
-      "first_name": "Илья",
-      "last_name": "Шелкович",
-      "username": "shelkovich_ilya"
+      "first_name": "max",
+      "username": "mikas_sh"
     },
     "text": "/allBooks",
     "entities": [
