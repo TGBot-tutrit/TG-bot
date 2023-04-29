@@ -10,6 +10,9 @@ class AllBooksProcessorTest {
 
     @Test
     void process() {
+        Update update = UpdateUtil.readUpdateJsonResourceFile("allBooks.json");
+        AddBookProcessor addBookProcessor = new AddBookProcessor();
+        addBookProcessor.process(update);
 
     }
 }

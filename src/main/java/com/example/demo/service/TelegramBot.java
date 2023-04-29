@@ -49,7 +49,6 @@ public class TelegramBot extends TelegramLongPollingBot {
             String response = new TakeBookProcessor().process(update);
             sendMessage.setText(response);
             sendMessage.setChatId(chatId);
-
         } else if (text.startsWith("/allBooks")) {
             Saver.saveAsJson(update);
             String response = new AllBooksProcessor().process(update);
