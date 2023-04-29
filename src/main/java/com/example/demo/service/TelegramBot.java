@@ -22,10 +22,10 @@ public class TelegramBot extends TelegramLongPollingBot {
         String text = update.getMessage().getText();
         SendMessage sendMessage = new SendMessage();
 
-        if("/start".equals(text)) {
+        if ("/start".equals(text)) {
             sendMessage.setText("Hello teamS2!");
             sendMessage.setChatId(chatId);
-        } else if("/save_book".equals(text)) {
+        } else if ("/save_book".equals(text)) {
             new SaveBookProcessor().save(update);
             sendMessage.setText("Book shell is full! come back later");
             sendMessage.setChatId(chatId);
@@ -47,6 +47,12 @@ public class TelegramBot extends TelegramLongPollingBot {
         } else if (text.startsWith("/takeBook")) {
             Saver.saveAsJson(update);
             String response = new TakeBookProcessor().process(update);
+            sendMessage.setText(response);
+            sendMessage.setChatId(chatId);
+
+        } else if (text.startsWith("/allBooks")) {
+            Saver.saveAsJson(update);
+            String response = new AllBooksProcessor().process(update);
             sendMessage.setText(response);
             sendMessage.setChatId(chatId);
         }

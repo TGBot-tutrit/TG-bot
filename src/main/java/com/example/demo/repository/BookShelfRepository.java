@@ -54,4 +54,9 @@ public class BookShelfRepository {
         return booksMap.size();
     }
 
+    void dropRepository() {
+        this.booksMap = new HashMap<>();
+        this.nextId = 1;
+    }
+
 }
