@@ -15,8 +15,8 @@ public class MyBooksProcessor {
         Long userId = update.getMessage().getChatId();
         Map<Integer, BookSlot> userBooks = bookShelfRepository.findBooksByUserId(userId);
         for (Map.Entry<Integer, BookSlot> entry : userBooks.entrySet()) {
-            stringBuilder.append(userId).
-                          append(": ").
+            stringBuilder.append(entry.getKey()).
+                          append(". ").
                           append(entry.getValue().getBook().getTitle()).
                           append("\n");
         }
